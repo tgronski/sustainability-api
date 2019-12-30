@@ -35,9 +35,8 @@ storesRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { storename, website, lastdatemodified, comments, packagingsid, categoriesid, ratingsid } = req.body
-    const newStore = { storename, website, lastdatemodified, comments, packagingsid, categoriesid, ratingsid }
-
+    const { storename, website,  comments, packagingsid, categoriesid, ratingsid } = req.body
+    const newStore = { storename, website, comments, packagingsid, categoriesid, ratingsid }
     for (const [key, value] of Object.entries(newStore)) {
       if (value == null) {
         return res.status(400).json({
@@ -50,6 +49,7 @@ storesRouter
     StoresService.insertStore(
       req.app.get('db'),
       newStore
+      
     )
       .then(store => {
         res
@@ -70,7 +70,7 @@ storesRouter
       .then(store => {
         if (!store) {
           return res.status(404).json({
-            error: { message: `packaging doesn't exist` }
+            error: { message: `Store doesn't exist` }
           })
         }
         res.store = store

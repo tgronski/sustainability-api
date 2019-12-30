@@ -9,6 +9,7 @@ const uuid = require('uuid/v4');
 const categoriesRouter = require('./categories/categories-router')
 const packagingsRouter = require('./packagings/packagings-router')
 const storesRouter = require('./stores/stores-router')
+const ratingsRouter = require('./Ratings/ratings-router')
 
 const app = express()
 
@@ -30,6 +31,7 @@ app.use('/api/categories', categoriesRouter)
 
 app.use('/api/packagings', packagingsRouter)
 app.use('/api/stores', storesRouter)
+app.use('/api/ratings', ratingsRouter)
 
 app.post('/', (req, res) => {
   res
