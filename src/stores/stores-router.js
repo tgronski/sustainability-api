@@ -35,8 +35,8 @@ storesRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { storename, website,  comments, packagingsid, categoriesid, ratingsid } = req.body
-    const newStore = { storename, website, comments, packagingsid, categoriesid, ratingsid }
+    const { storeid, storename, website,  comments, packagingsid, categoriesid, ratingsid } = req.body
+    const newStore = { storeid, storename, website, comments, packagingsid, categoriesid, ratingsid }
     for (const [key, value] of Object.entries(newStore)) {
       if (value == null) {
         return res.status(400).json({

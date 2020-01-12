@@ -4,7 +4,7 @@ module.exports = {
   "migrationsDirectory": "migrations",
   "driver": "pg",
   "connectionString": (process.env.NODE_ENV === 'test')
-    ? process.env.TEST_DATABASE_URL
-    : process.env.DATABASE_URL,
+    ? 'postgresql://dunder_mifflin@localhost/sustainability-test'
+    : 'postgresql://dunder_mifflin@localhost/theresegronski',
   "ssl": !!process.env.SSL,
 }

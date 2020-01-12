@@ -1,6 +1,6 @@
 INSERT INTO sustainability_categories (categoriesdescription)
 VALUES
-    ('Food & Coffee'),
+    ('Food & Coffee' ),
     ('Clothing'),
     ('Luxury Goods'),
     ('Homeware'),
