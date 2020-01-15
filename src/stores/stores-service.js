@@ -1,28 +1,28 @@
-
 const StoresService = {
   getAllStores(knex) {
-    return knex
-    .select('*')
-    .from('sustainability_stores')
+    return knex.select("*").from("sustainability_stores");
   },
   getById(knex, storeid) {
-    return knex.from('sustainability_stores').select('*').where('storeid', storeid).first()
+    return knex
+      .from("sustainability_stores")
+      .select("*")
+      .where("storeid", storeid)
+      .first();
   },
   insertStore(knex, newStore) {
-      
     return knex
       .insert(newStore)
-      .into('sustainability_stores')
-      .returning('*')
+      .into("sustainability_stores")
+      .returning("*")
       .then(rows => {
-        return rows[0]
-      })
+        return rows[0];
+      });
   },
   deleteStore(knex, storeid) {
-    return knex('sustainability_stores')
-      .where('storeid', storeid)
-      .delete()
-  },
-}
+    return knex("sustainability_stores")
+      .where("storeid", storeid)
+      .delete();
+  }
+};
 
 module.exports = StoresService;
