@@ -1,4 +1,3 @@
-const path = require("path");
 const knex = require("knex");
 require("dotenv").config();
 const express = require("express");
