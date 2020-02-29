@@ -28,9 +28,7 @@ const StoresService = {
       .where({id:storeid})
       .update(editStore, returning=true)
       .returning("*")
-      .then(rows => {
-        return rows[0];
-      });
+
   },
 };
 

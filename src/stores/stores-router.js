@@ -111,9 +111,9 @@ storesRouter
 
     StoresService.updateStore(req.app.get("db"), req.params.storeid, editStore)
     .then(editedStore=>{
-      res.status(200).json(serializeStores(editedStore))
+      res.status(200).json(serializeStores(editedStore[0]))
     })
-    .catch(next);
+    .catch(console.log(res));
   })
 
 module.exports = storesRouter;
