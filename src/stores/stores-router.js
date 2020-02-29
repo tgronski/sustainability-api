@@ -2,16 +2,16 @@ const path = require("path");
 require("dotenv").config();
 const express = require("express");
 const StoresService = require("./stores-service");
-
+const xss = require(xss);
 const storesRouter = express.Router();
 const jsonParser = express.json();
 
 const serializeStores = store => ({
   storeid: store.storeid,
-  storename: store.storename,
-  website: store.website,
+  storename: xxs(store.storename),
+  website: xss(store.website),
   lastdatemodified: store.lastdatemodified,
-  comments: store.comments,
+  comments: xss(store.comments),
   packagingsid: store.packagingsid,
   categoriesid: store.categoriesid,
   ratingsid: store.ratingsid
@@ -89,7 +89,7 @@ storesRouter
       })
       .catch(next);
   })
-  .put((req,res,next)=>{
+  .patch((req,res,next)=>{
     const {storeid,
       storename,
       website,
@@ -113,7 +113,7 @@ storesRouter
     .then(editedStore=>{
       res.status(200).json(serializeStores(editedStore[0]))
     })
-    .catch(console.log(res));
+    .catch(next);
   })
 
 module.exports = storesRouter;
