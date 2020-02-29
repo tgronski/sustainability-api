@@ -2,7 +2,7 @@ const path = require("path");
 require("dotenv").config();
 const express = require("express");
 const StoresService = require("./stores-service");
-const xss = require(xss);
+const xss = require('xss');
 const storesRouter = express.Router();
 const jsonParser = express.json();
 
@@ -89,7 +89,7 @@ storesRouter
       })
       .catch(next);
   })
-  .patch((req,res,next)=>{
+  .patch(jsonParser,(req,res,next)=>{
     const {storeid,
       storename,
       website,
