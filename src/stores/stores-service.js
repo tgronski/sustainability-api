@@ -22,7 +22,16 @@ const StoresService = {
     return knex("sustainability_stores")
       .where("storeid", storeid)
       .delete();
-  }
+  },
+  updateStore(knex, storeid, editStore) {
+    return knex
+      .where({id:storeid})
+      .update(editStore, returning=true)
+      .returning("*")
+      .then(rows => {
+        return rows[0];
+      });
+  },
 };
 
 module.exports = StoresService;

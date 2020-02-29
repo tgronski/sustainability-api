@@ -31,7 +31,6 @@ storesRouter
   })
   .post(jsonParser, (req, res, next) => {
     const {
-      storeid,
       storename,
       website,
       comments,
@@ -40,7 +39,6 @@ storesRouter
       ratingsid
     } = req.body;
     const newStore = {
-      storeid,
       storename,
       website,
       comments,
@@ -90,6 +88,32 @@ storesRouter
         res.status(204).end();
       })
       .catch(next);
-  });
+  })
+  .put((req,res,next)=>{
+    const {storeid,
+      storename,
+      website,
+      comments,
+      packagingsid,
+      categoriesid,
+      ratingsid} = req.body
+    const editStore = {storeid,
+      storename,
+      website,
+      comments,
+      packagingsid,
+      categoriesid,
+      ratingsid}
+    
+    for( const [key,value] of Object.entries(editStore))
+    if(value==null)
+    res.status(400).json({error:{message: `Missing ${key}`}})
+
+    StoresService.updateStore(req.app.get("db"), req.params.storeid, editStore)
+    .then(editedStore=>{
+      res.status(200).json(serializeStores(editedStore))
+    })
+    .catch(next);
+  })
 
 module.exports = storesRouter;

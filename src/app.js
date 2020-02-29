@@ -5,7 +5,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
 const errorHandler = require("./errorHandler");
-const uuid = require("uuid/v4");
 const categoriesRouter = require("./categories/categories-router");
 const packagingsRouter = require("./packagings/packagings-router");
 const storesRouter = require("./stores/stores-router");
