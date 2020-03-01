@@ -28,7 +28,6 @@ const StoresService = {
       .where("storeid",storeid)
       .update(editStore, returning=true)
       .returning("*")
-
   },
 };
 
