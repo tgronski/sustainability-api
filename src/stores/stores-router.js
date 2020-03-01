@@ -107,7 +107,8 @@ storesRouter
     
     for( const [key,value] of Object.entries(editStore))
     if(value==null)
-    res.status(400).json({error:{message: `Missing ${req.body} ${req.options}`}})
+    console.log(req)
+    res.status(400).json({error:{message: `Missing ${req} & ${req.options}`}})
 
     StoresService.updateStore(req.app.get("db"), req.params.storeid, editStore)
     .then(editedStore=>{
