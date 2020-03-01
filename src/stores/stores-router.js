@@ -111,7 +111,7 @@ storesRouter
 
     StoresService.updateStore(req.app.get("db"), req.params.storeid, editStore)
     .then(editedStore=>{
-      res.status(200).json(serializeStores(editedStore[0]))
+      res.status(204).json(serializeStores(editedStore[0]))
     })
     .catch(next);
   })
