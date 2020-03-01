@@ -89,7 +89,7 @@ storesRouter
       })
       .catch(next);
   })
-  .patch(jsonParser,(req,res,next)=>{
+  .put(jsonParser,(req,res,next)=>{
     const {storeid,
       storename,
       website,

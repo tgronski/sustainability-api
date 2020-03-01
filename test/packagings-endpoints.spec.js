@@ -9,7 +9,7 @@ describe("Packagings Endpoints", function() {
   before("make knex instance", () => {
     db = knex({
       client: "pg",
-      connection: "postgresql://dunder_mifflin@localhost/sustainability-test"
+      connection: "postgresql://theresegronski@localhost/sustainability-test"
     });
     app.set("db", db);
   });
