@@ -107,11 +107,11 @@ storesRouter
     
     for( const [key,value] of Object.entries(editStore))
     if(value==null)
-    res.status(400).json({error:{message: `Missing ${key} from ${res.store}`}})
+    res.status(400).json({error:{message: `Missing ${key}`}})
 
     StoresService.updateStore(req.app.get("db"), req.params.storeid, editStore)
     .then(editedStore=>{
-      res.status(204).json(serializeStores(editedStore[0]))
+      res.status(201).json(serializeStores(editedStore[0]))
     })
     .catch(next);
   })
