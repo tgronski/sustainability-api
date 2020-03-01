@@ -25,7 +25,7 @@ const StoresService = {
   },
   updateStore(knex, storeid, editStore) {
     return knex
-      .where({id:storeid})
+      .where({storeid:storeid})
       .update(editStore, returning=true)
       .returning("*")
 
