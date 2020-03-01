@@ -96,7 +96,7 @@ storesRouter
       comments,
       packagingsid,
       categoriesid,
-      ratingsid} = res.store
+      ratingsid} = req.body
     const editStore = {storeid,
       storename,
       website,
@@ -111,7 +111,7 @@ storesRouter
 
     StoresService.updateStore(req.app.get("db"), req.params.storeid, editStore)
     .then(editedStore=>{
-      res.status(201).json(serializeStores(editedStore[0]))
+      res.status(200).json(serializeStores(editedStore[0]))
     })
     .catch(next);
   })
