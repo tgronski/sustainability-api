@@ -24,7 +24,7 @@ const StoresService = {
       .delete();
   },
   updateStore(knex, storeid, editStore) {
-    return knex
+    return knex("sustainability_stores")
       .where("storeid",storeid)
       .update(editStore, returning=true)
       .returning("*")
