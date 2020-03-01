@@ -8,7 +8,7 @@ const jsonParser = express.json();
 
 const serializeStores = store => ({
   storeid: store.storeid,
-  storename: xxs(store.storename),
+  storename: xss(store.storename),
   website: xss(store.website),
   lastdatemodified: store.lastdatemodified,
   comments: xss(store.comments),
