@@ -97,13 +97,15 @@ storesRouter
       packagingsid,
       categoriesid,
       ratingsid} = req.body
+    const today= new Date();
+    const lastdatemodified=today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
     const editStore = {
       storename,
       website,
       comments,
       packagingsid,
       categoriesid,
-      ratingsid}
+      ratingsid, lastdatemodified}
     
     for( const [key,value] of Object.entries(editStore))
     if(value==null)
