@@ -90,14 +90,14 @@ storesRouter
       .catch(next);
   })
   .put(jsonParser,(req,res,next)=>{
-    const {storeid,
+    const {
       storename,
       website,
       comments,
       packagingsid,
       categoriesid,
       ratingsid} = req.body
-    const editStore = {storeid,
+    const editStore = {
       storename,
       website,
       comments,
@@ -107,8 +107,7 @@ storesRouter
     
     for( const [key,value] of Object.entries(editStore))
     if(value==null)
-    console.log(req)
-    res.status(400).json({error:{message: `Missing ${req} & ${req.options}`}})
+    res.status(400).json({error:{message: `Missing ${key}`}})
 
     StoresService.updateStore(req.app.get("db"), req.params.storeid, editStore)
     .then(editedStore=>{
