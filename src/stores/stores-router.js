@@ -98,7 +98,7 @@ storesRouter
       categoriesid,
       ratingsid} = req.body
     const today= new Date();
-    const lastdatemodified=today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
+    const lastdatemodified=today.getFullYear()+'/'+(today.getMonth()+1)+'/'+(today.getDate()-1);
     const editStore = {
       storename,
       website,
